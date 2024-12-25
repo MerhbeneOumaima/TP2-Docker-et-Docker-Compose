@@ -5,13 +5,13 @@ pipeline {
     }
     environment {
         DOCKERHUB_CREDENTIALS = credentials('dockerhub')
-        IMAGE_NAME_SERVER = '[username]/mern-server'
-        IMAGE_NAME_CLIENT = '[username]/mern-client'
+        IMAGE_NAME_SERVER = 'merhebenoumaima/mern-server'
+        IMAGE_NAME_CLIENT = 'merhebenoumaima/mern-client'
     }
     stages {
         stage ('Checkout') {
             steps {
-                git branch: 'main', url: 'git@github.com:username/mern-app.git', credentialsId: 'GitHub_ssh'
+                git branch: 'main', url: 'git@github.com:MerhbeneOumaima/TP2-Docker-et-Docker-Compose.git', credentialsId: 'GitHub_ssh'
             }
         }
 
@@ -110,7 +110,7 @@ pipeline {
             }
             steps {
                 script {
-                    docker.withRegistry('', "${DOCKERHUB_CREDENTIALS}") {
+                    docker.withRegistry('https://index.docker.io/v1/', 'dockerhub') {
                         if (env.SERVER_CHANGED == 'true') {
                             dockerImageServer.push()
                         }
