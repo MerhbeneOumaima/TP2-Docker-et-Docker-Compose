@@ -11,7 +11,7 @@ pipeline {
     stages {
         stage ('Checkout') {
             steps {
-                git branch: 'main', url: 'git@github.com:MerhbeneOumaima/TP2-Docker-et-Docker-Compose.git', credentialsId: 'GitHub_ssh'
+                git branch: 'main', url: 'git@github.com:MerhbeneOumaima/TP2-Docker-et-Docker-Compose.git', credentialsId: 'Gitlab_ssh'
             }
         }
 
